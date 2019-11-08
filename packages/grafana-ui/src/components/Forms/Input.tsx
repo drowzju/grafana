@@ -2,7 +2,7 @@ import React, { cloneElement, FC, HTMLProps, isValidElement, ReactNode } from 'r
 import { GrafanaTheme } from '@grafana/data';
 import { css, cx } from 'emotion';
 import { selectThemeVariant, stylesFactory, useTheme } from '../../themes';
-import { getFocusStyle } from './commonStyles';
+import { getFocusStyle, sharedInputStyle } from './commonStyles';
 import { Spinner } from '..';
 
 interface Props extends HTMLProps<HTMLInputElement> {
@@ -78,32 +78,14 @@ const getInputStyle = stylesFactory(
       ),
       input: cx(
         css`
-          background-color: ${backgroundColor};
           height: 100%;
           width: 100%;
           flex-grow: 1;
-          padding: 0 ${theme.spacing.formInputPaddingHorizontal};
           margin-bottom: ${invalid ? theme.spacing.formSpacingBase / 2 : theme.spacing.formSpacingBase * 2}px;
           position: relative;
           z-index: 1;
-
-          line-height: ${theme.typography.lineHeight.lg};
-          font-size: ${theme.typography.size.md};
-          color: ${selectThemeVariant({ light: colors.gray25, dark: colors.gray85 }, theme.type)};
-
-          &:hover {
-            border-color: ${selectThemeVariant({ light: colors.gray70, dark: colors.gray33 }, theme.type)};
-          }
-
-          &:focus {
-            outline: none;
-          }
-
-          &:disabled {
-            background-color: ${selectThemeVariant({ light: colors.gray6, dark: colors.gray10 }, theme.type)};
-            color: ${selectThemeVariant({ light: colors.gray33, dark: colors.gray70 }, theme.type)};
-          }
         `,
+        sharedInputStyle(theme),
         inputBorders
       ),
       addon: css`
