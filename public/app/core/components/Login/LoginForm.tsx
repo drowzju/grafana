@@ -98,7 +98,7 @@ export class LoginForm extends PureComponent<Props, State> {
               onClick={this.onSubmit}
               disabled={!this.state.valid}
             >
-              Log In
+              登录
             </button>
           ) : (
             <button type="submit" className="btn btn-large p-x-2 btn-inverse btn-loading">
@@ -110,7 +110,7 @@ export class LoginForm extends PureComponent<Props, State> {
 
           {this.props.displayForgotPassword ? (
             <div className="small login-button-forgot-password">
-              <a href="user/password/send-reset-email">Forgot your password?</a>
+              <a href="user/password/send-reset-email">忘记密码?</a>
             </div>
           ) : null}
         </div>
